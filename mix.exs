@@ -3,8 +3,8 @@ defmodule Plane.Mixfile do
 
   def project do
     [app: :plane,
-     version: "0.1.0",
-     elixir: "~> 1.4",
+     version: "0.2.0",
+     elixir: "~> 1.6",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps()]
@@ -28,6 +28,6 @@ defmodule Plane.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:exleveldb, "~> 0.10"}]
+    [{:exleveldb, "~> 0.13"}]
   end
 end
