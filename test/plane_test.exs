@@ -8,7 +8,7 @@ defmodule PlaneTest do
     end
   end
   
-  test "A database can be created" do
+  test "An empty database can be created" do
     with_level "testdb" do
       assert Exleveldb.is_empty?(db)
     end

@@ -11,12 +11,11 @@ defmodule Plane do
   end
 
   @doc """
-  Create a datastore.
+  Create a scope for a datastore.
   """
   defmacro with_level(db_name, db_opts \\ [create_if_missing: true], do: block) do
     quote do
       {:ok, var!(db)} = Exleveldb.open(unquote(db_name), unquote(db_opts))
-      # TODO: Find out how to inject the db value into the `block` scope.
       unquote(block)
       Exleveldb.close(var!(db))
     end
