@@ -21,5 +21,17 @@ defmodule Plane do
     end
   end
 
+  defmacro put(key, val) do
+    quote do
+      Exleveldb.put(var!(db), unquote(key), unquote(val))
+    end
+  end
+
+  defmacro get(key) do
+    quote do
+      Exleveldb.get(var!(db), unquote(key))
+    end
+  end
+
   def destroy(db_name), do: Exleveldb.destroy(db_name)
 end

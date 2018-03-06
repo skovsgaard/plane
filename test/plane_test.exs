@@ -29,4 +29,20 @@ defmodule PlaneTest do
       Exleveldb.close(db)
     end
   end
+
+  test "A database can be written to from within its scope" do
+    with_level "testdb" do
+      put "testkey", "testval"
+    end
+  end
+
+  test "A database containing data can be read from from inside its scope" do
+    {:ok, db} = Exleveldb.open("testdb")
+    Exleveldb.put(db, "testkey", "testval")
+    Exleveldb.close("testdb")
+
+    with_level "testbd" do
+      assert get "testkey"
+    end
+  end
 end
