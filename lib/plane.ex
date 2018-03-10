@@ -33,5 +33,11 @@ defmodule Plane do
     end
   end
 
+  defmacro delete(key) do
+    quote do
+      Exleveldb.delete(var!(db), key)
+    end
+  end
+
   def destroy(db_name), do: Exleveldb.destroy(db_name)
 end
