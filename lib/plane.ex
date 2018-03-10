@@ -7,6 +7,7 @@ defmodule Plane do
   defmacro __using__(_) do
     quote do
       import Plane
+      import Exleveldb, only: is_empty?/1
     end
   end
 
